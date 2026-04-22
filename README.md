@@ -1,5 +1,5 @@
 1. Familiarize with restful-booker API - https://restful-booker.herokuapp.com/apidoc/index.html
-2. Implement at least 4 test scenarios using one of JS native fetch (https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch) 
+2. Implement at least 4 test scenarios using one of JS native fetch (https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch). 
 For debugging please use Postman.
 
 e.g.
