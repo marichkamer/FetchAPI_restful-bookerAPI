@@ -1,4 +1,6 @@
 import assert from 'assert';
+import { authData, bookingData, updatedBookingData } from '../testdata/data';
+
 
 (async () => {
   try {
@@ -6,10 +8,7 @@ import assert from 'assert';
     const createToken = await fetch("https://restful-booker.herokuapp.com/auth", {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        username: 'admin',
-        password: 'password123'
-      })
+      body: JSON.stringify(authData)
     });
 
     assert.strictEqual(createToken.status, 200);
@@ -19,17 +18,7 @@ import assert from 'assert';
     const createBooking = await fetch("https://restful-booker.herokuapp.com/booking", {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        firstname: "Jim",
-        lastname: "Brown",
-        totalprice: 111,
-        depositpaid: true,
-        bookingdates: {
-          checkin: "2018-01-01",
-          checkout: "2019-01-01"
-        },
-        additionalneeds: "Breakfast"
-      })
+      body: JSON.stringify(bookingData)
     });
 
     assert.strictEqual(createBooking.status, 200);
@@ -45,7 +34,7 @@ import assert from 'assert';
     assert.strictEqual(getBooking.status, 200);
 
     const getData = await getBooking.json();
-    assert.strictEqual(getData.firstname, 'Jim');
+    assert.strictEqual(getData.firstname, bookingData.firstname);
 
   
     const updateBooking = await fetch(`https://restful-booker.herokuapp.com/booking/${bookingId}`, {
@@ -54,23 +43,13 @@ import assert from 'assert';
         'Content-Type': 'application/json',
         'Cookie': `token=${token}`
       },
-      body: JSON.stringify({
-        firstname: "Milan",
-        lastname: "Brown",
-        totalprice: 111,
-        depositpaid: true,
-        bookingdates: {
-          checkin: "2018-01-01",
-          checkout: "2019-01-01"
-        },
-        additionalneeds: "Breakfast"
-      })
+      body: JSON.stringify(updatedBookingData)
     });
 
     assert.strictEqual(updateBooking.status, 200);
 
     const updateData = await updateBooking.json();
-    assert.strictEqual(updateData.firstname, 'Milan');
+    assert.strictEqual(updateData.firstname, updatedBookingData.firstname);
 
     
     const deleteBooking = await fetch(`https://restful-booker.herokuapp.com/booking/${bookingId}`, {
