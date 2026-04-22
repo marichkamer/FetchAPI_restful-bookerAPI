@@ -3,11 +3,11 @@
 For debugging please use Postman.
 
 e.g.
-Create a token and reuse it in the next API calls
-Create a booking
-Get created booking by id
-Update booking
-Remove booking
+- Create a token and reuse it in the next API calls
+- Create a booking
+- Get created booking by id
+- Update booking
+- Remove booking
 
 3. Add assertions for headers, status code and body of response
 4. Add script into package.json to run API tests through the CLI
