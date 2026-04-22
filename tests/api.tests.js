@@ -1,5 +1,5 @@
 import assert from 'assert';
-import { authData, bookingData, updatedBookingData } from '../testdata/data';
+import { authData, bookingData, updatedBookingData } from '../testdata/data.js';
 
 
 (async () => {
